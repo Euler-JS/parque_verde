@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parque de Infraestruturas Verdes da Cidade da Beira</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #00ff88;
+            --secondary-green: #00cc6a;
+            --dark-green: #004d25;
+            --gradient-1: linear-gradient(135deg, #00ff88, #00cc6a, #20b2aa);
+            --gradient-2: linear-gradient(45deg, #00ff88, #32cd32, #00fa9a);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(-45deg, #0a4d3a, #0d5f47, #116a52, #14755d);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary-green);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px 5%;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 25px;
+        }
+
+        .nav-links a:hover {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--primary-green);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::after {
+            width: 80%;
+        }
+
+        /* Hero Section */
+       .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background-image: url('assets/img/parque_back.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+       .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0, 77, 58, 0.8), rgba(13, 95, 71, 0.7), rgba(17, 106, 82, 0.6));
+            z-index: 2;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="g" cx="50%" cy="50%"><stop offset="0%" stop-color="%2300ff88" stop-opacity="0.1"/><stop offset="100%" stop-color="%2300ff88" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23g)"/><circle cx="800" cy="300" r="150" fill="url(%23g)"/><circle cx="500" cy="700" r="120" fill="url(%23g)"/></svg>');
+            opacity: 0.2;
+            animation: bgMove 20s ease-in-out infinite;
+            z-index: 3;
+        }
+
+        @keyframes bgMove {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(-20px, -20px) scale(1.05); }
+            66% { transform: translate(20px, -10px) scale(0.95); }
+        }
+
+        .hero-content {
+            z-index: 10;
+            max-width: 800px;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideUp 1s ease 0.5s both;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            animation: slideUp 1s ease 0.7s both;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: slideUp 1s ease 0.9s both;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.4);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .about-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.2);
+        }
+
+        .about-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-green);
+        }
+
+        .card-text {
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            height: 250px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .gallery-item-1 {
+            background-image: url('assets/img/image.png');
+        }
+
+        .gallery-item-2 {
+            background-image: url('assets/img/image_2.png');
+        }
+
+        .gallery-item-3 {
+            background-image: url('assets/img/image_3.png');
+        }
+
+        .gallery-item-4 {
+            background-image: url('assets/img/image_4.png');
+        }
+
+        .gallery-item-5 {
+            background-image: url('assets/img/image_5.png');
+        }
+
+        .gallery-item-6 {
+            background-image: url('assets/img/image_6.png');
+        }
+        .gallery-item-7 {
+            background-image: url('assets/img/image_7.png');
+        }
+        .gallery-item-8 {
+            background-image: url('assets/img/image_8.png');
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.3);
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0, 255, 136, 0.3), rgba(0, 0, 0, 0.4));
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 0.9;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .form-input::placeholder, .form-textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--glass-border);
+            margin-top: 5rem;
+        }
+
+        .footer-text {
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        .footer-link {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            text-shadow: 0 0 10px var(--primary-green);
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: var(--gradient-1);
+            z-index: 9999;
+            transition: width 0.3s ease;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero {
+                padding: 0 1rem;
+            }
+
+            section {
+                padding: 60px 5%;
+            }
+        }
+
+        /* Intersection Observer Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator" id="scrollIndicator"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">🌿 Parque Verde Beira</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Sobre Nós</a></li>
+                <li><a href="#gallery">Galeria</a></li>
+                <li><a href="#contact">Contate-nos</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>Parque de Infraestruturas Verdes da Cidade da Beira</h1>
+            <p>Dar benefício à população da Cidade da Beira de infraestruturas públicas e comerciais e das suas operações que contribuem para a resiliência climática, socioeconómica, desenvolvimento inclusivo e prosperidade.</p>
+            <div class="cta-buttons">
+                <a href="#about" class="btn btn-primary">
+                    <span>Descobrir Mais</span>
+                    <span>→</span>
+                </a>
+                <a href="#gallery" class="btn btn-secondary">
+                    <span>Ver Galeria</span>
+                    <span>📸</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="fade-in">
+        <h2 class="section-title">Sobre Nós</h2>
+        <div class="about-grid">
+            <div class="about-card">
+                <div class="card-icon">🏢</div>
+                <h3 class="card-title">EMRICH</h3>
+                <p class="card-text">A Empresa Municipal do Rio Chiveve - EMRICH é responsável pela gestão do Parque, garantindo operações sustentáveis e benefícios duradouros para a comunidade.</p>
+            </div>
+            <div class="about-card">
+                <div class="card-icon">🌍</div>
+                <h3 class="card-title">Projeto Master Plan</h3>
+                <p class="card-text">Parte integrante do Master Plan da Beira 2015-2035, desenvolvido com financiamento do Banco Mundial e KFW para um futuro sustentável.</p>
+            </div>
+            <div class="about-card">
+                <div class="card-icon">🌱</div>
+                <h3 class="card-title">Adaptação Climática</h3>
+                <p class="card-text">Segunda fase do projeto de adaptação às mudanças climáticas na Beira, valorizando o espaço verde público urbano com usos comerciais e recreativos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="fade-in">
+        <h2 class="section-title">Galeria</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item gallery-item-1">
+                <div class="gallery-overlay">
+                    <h4>Atividades Aquáticas</h4>
+                    <p>Canoagem e esportes aquáticos no rio</p>
+                </div>
+            </div>
+            <div class="gallery-item gallery-item-2">
+                <div class="gallery-overlay">
+                    <h4>Vista Aérea</h4>
+                    <p>Infraestruturas verdes e espaços comerciais</p>
+                </div>
+            </div>
+            <div class="gallery-item gallery-item-3">
+                <div class="gallery-overlay">
+                    <h4>Mirante</h4>
+                    <p>Plataforma de observação com vista panorâmica</p>
+                </div>
+            </div>
+            <div class="gallery-item gallery-item-4">
+                <div class="gallery-overlay">
+                    <h4>Jardins Temáticos</h4>
+                    <p>Espaços verdes com plantas nativas</p>
+                </div>
+            </div>
+            <div class="gallery-item gallery-item-5">
+                <div class="gallery-overlay">
+                    <h4>Área Recreativa</h4>
+                    <p>Playground e espaços para famílias</p>
+                </div>
+            </div>
+            <div class="gallery-item gallery-item-6">
+                <div class="gallery-overlay">
+                    <h4>Centro Comercial</h4>
+                    <p>Tendas e espaços para comércio local</p>
+                </div>
+            </div>
+            <div class="gallery-item gallery-item-7">
+                <div class="gallery-overlay">
+                    <!-- <h4>Centro Comercial</h4>
+                    <p>Tendas e espaços para comércio local</p> -->
+                </div>
+            </div>
+            <div class="gallery-item gallery-item-8">
+                <div class="gallery-overlay">
+                    <!-- <h4>Centro Comercial</h4>
+                    <p>Tendas e espaços para comércio local</p> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="fade-in">
+        <h2 class="section-title">Contate-nos</h2>
+        <div class="contact-container">
+            <form class="contact-form">
+                <div class="form-group">
+                    <input type="text" class="form-input" placeholder="Nome Completo" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="email" class="form-input" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-input" placeholder="Telefone">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-textarea" placeholder="Escreva sua mensagem aqui..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="justify-self: center;">
+                    <span>Enviar Mensagem</span>
+                    <span>✈️</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-text">Todos os direitos reservados © 2025</p>
+        <p>Desenvolvida pela: <a href="#" class="footer-link">EMPRESA MUNICIPAL DO RIO CHIVEVE - EMRICH</a></p>
+    </footer>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Scroll indicator
+        function updateScrollIndicator() {
+            const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            document.getElementById('scrollIndicator').style.width = scrollPercent + '%';
+        }
+
+        // Navbar scroll effect
+        function handleNavbarScroll() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
+
+        // Intersection Observer for animations
+        function createObserver() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Smooth scrolling for navigation links
+        function setupSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Form submission
+        function setupForm() {
+            const form = document.querySelector('.contact-form');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Create success message
+                const button = form.querySelector('button');
+                const originalText = button.innerHTML;
+                button.innerHTML = '<span>✅ Mensagem Enviada!</span>';
+                button.style.background = 'linear-gradient(135deg, #00ff88, #32cd32)';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.style.background = '';
+                    form.reset();
+                }, 3000);
+            });
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            createObserver();
+            setupSmoothScroll();
+            setupForm();
+        });
+
+        // Scroll event listeners
+        window.addEventListener('scroll', function() {
+            updateScrollIndicator();
+            handleNavbarScroll();
+        });
+
+        // Add some interactive hover effects to gallery items
+        document.addEventListener('DOMContentLoaded', function() {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            galleryItems.forEach((item) => {
+                // Add click effect
+                item.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
