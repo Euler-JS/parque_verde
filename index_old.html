@@ -137,7 +137,7 @@
         }
 
         /* Hero Section */
-        .hero {
+       .hero {
             height: 100vh;
             display: flex;
             align-items: center;
@@ -152,7 +152,7 @@
             background-attachment: fixed;
         }
 
-        .hero::before {
+       .hero::before {
             content: '';
             position: absolute;
             top: 0;
@@ -381,7 +381,7 @@
             background-repeat: no-repeat;
         }
 
-                .gallery-item-1 {
+        .gallery-item-1 {
             background-image: url('assets/img/image.png');
         }
 
@@ -513,300 +513,6 @@
             margin-top: 5rem;
         }
 
-        /* Spaces Section */
-        .spaces-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 3rem;
-            align-items: start;
-        }
-
-        .map-container {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 2rem;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .map-placeholder {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(0,255,136,0.1), rgba(32,178,170,0.1));
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: var(--primary-green);
-            border: 2px dashed var(--glass-border);
-        }
-
-        .basins-grid {
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        .basin-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .basin-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 255, 136, 0.2);
-            border-color: var(--primary-green);
-        }
-
-        .basin-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--primary-green);
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .basin-description {
-            opacity: 0.9;
-            line-height: 1.5;
-        }
-
-        /* Weather Section */
-        .weather-container {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 2.5rem;
-            margin-top: 3rem;
-        }
-
-        .weather-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .weather-card {
-            text-align: center;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            border: 1px solid var(--glass-border);
-        }
-
-        .weather-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .weather-temp {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary-green);
-            margin-bottom: 0.5rem;
-        }
-
-        .weather-desc {
-            opacity: 0.8;
-        }
-
-        /* Safety Section */
-        .safety-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .safety-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-            border-left: 4px solid var(--primary-green);
-        }
-
-        .safety-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 255, 136, 0.2);
-        }
-
-        .safety-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .safety-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--primary-green);
-        }
-
-        .safety-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .safety-list li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-            opacity: 0.9;
-        }
-
-        .safety-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--primary-green);
-            font-weight: bold;
-        }
-
-        /* Info Section */
-        .info-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .info-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .info-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 255, 136, 0.2);
-        }
-
-        .info-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .info-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-        }
-
-        .info-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--primary-green);
-        }
-
-        .info-content {
-            line-height: 1.6;
-            opacity: 0.9;
-        }
-
-        /* Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .service-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--gradient-1);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.3);
-        }
-
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .service-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--gradient-1);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 2rem;
-        }
-
-        .service-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--primary-green);
-        }
-
-        .service-contact {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 1rem;
-            margin-top: 1rem;
-            border: 1px solid var(--glass-border);
-        }
-
         .footer-text {
             opacity: 0.8;
             margin-bottom: 1rem;
@@ -851,35 +557,10 @@
 
             .hero {
                 padding: 0 1rem;
-                background-attachment: scroll; /* Fix for mobile */
             }
 
             section {
                 padding: 60px 5%;
-            }
-
-            .spaces-container {
-                grid-template-columns: 1fr;
-            }
-
-            .map-container {
-                height: 250px;
-            }
-
-            .weather-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .safety-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .info-container {
-                grid-template-columns: 1fr;
             }
         }
 
@@ -909,13 +590,9 @@
             <div class="logo">🌿 Parque Verde Beira</div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#spaces">Espaços</a></li>
-                <li><a href="#info">Informações</a></li>
-                <li><a href="#weather">Previsão</a></li>
-                <li><a href="#safety">Segurança</a></li>
                 <li><a href="#about">Sobre Nós</a></li>
                 <li><a href="#gallery">Galeria</a></li>
-                <li><a href="#contact">Contacto</a></li>
+                <li><a href="#contact">Contate-nos</a></li>
             </ul>
         </div>
     </nav>
@@ -927,7 +604,7 @@
             <h1>Parque de Infraestruturas Verdes da Cidade da Beira</h1>
             <p>Dar benefício à população da Cidade da Beira de infraestruturas públicas e comerciais e das suas operações que contribuem para a resiliência climática, socioeconómica, desenvolvimento inclusivo e prosperidade.</p>
             <div class="cta-buttons">
-                <a href="#spaces" class="btn btn-primary">
+                <a href="#about" class="btn btn-primary">
                     <span>Descobrir Mais</span>
                     <span>→</span>
                 </a>
@@ -935,230 +612,6 @@
                     <span>Ver Galeria</span>
                     <span>📸</span>
                 </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Spaces Section -->
-    <section id="spaces" class="fade-in">
-        <h2 class="section-title">Espaços do Parque</h2>
-        <div class="spaces-container">
-            <div class="map-container">
-                <div class="map-placeholder">
-                    🗺️ Mapa Interativo das Bacias
-                    <br><small>Em breve: Mapa detalhado do parque</small>
-                </div>
-            </div>
-            <div class="basins-grid">
-                <div class="basin-card">
-                    <h3 class="basin-title">🌊 Bacia 1</h3>
-                    <p class="basin-description">Área principal de atividades aquáticas e recreação. Inclui zona de canoagem, pesca e observação da natureza.</p>
-                </div>
-                <div class="basin-card">
-                    <h3 class="basin-title">🌿 Bacia 2</h3>
-                    <p class="basin-description">Zona de conservação e jardins temáticos. Espaço dedicado à flora nativa e educação ambiental.</p>
-                </div>
-                <div class="basin-card">
-                    <h3 class="basin-title">🏪 Bacia 3</h3>
-                    <p class="basin-description">Área comercial e de serviços. Tendas de vendedores locais, restaurantes e facilidades para visitantes.</p>
-                </div>
-                <div class="basin-card">
-                    <h3 class="basin-title">🎯 Bacia 4</h3>
-                    <p class="basin-description">Zona recreativa e desportiva. Playground, campos de jogos e áreas de exercício ao ar livre.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Information Section -->
-    <section id="info" class="fade-in">
-        <h2 class="section-title">Informações</h2>
-        <div class="info-container">
-            <div class="info-card">
-                <div class="info-header">
-                    <div class="info-icon">🕐</div>
-                    <h3 class="info-title">Horários</h3>
-                </div>
-                <div class="info-content">
-                    <strong>Segunda a Domingo:</strong> 06:00 - 18:00<br>
-                    <strong>Entrada:</strong> 20 MT<br>
-                    <strong>Última entrada:</strong> 17:30
-                </div>
-            </div>
-            <div class="info-card">
-                <div class="info-header">
-                    <div class="info-icon">🚗</div>
-                    <h3 class="info-title">Acesso</h3>
-                </div>
-                <div class="info-content">
-                    <strong>Estacionamento:</strong> Disponível<br>
-                    <strong>Transporte público:</strong> Chapa 3, 5, 7<br>
-                    <strong>Localização:</strong> Cidade da Beira, Mozambique
-                </div>
-            </div>
-            <div class="info-card">
-                <div class="info-header">
-                    <div class="info-icon">🎯</div>
-                    <h3 class="info-title">Atividades</h3>
-                </div>
-                <div class="info-content">
-                    <strong>Recreação:</strong> Playground, jogos<br>
-                    <strong>Desporto:</strong> Canoagem, pesca<br>
-                    <strong>Comercio:</strong> Mercado local, restauração
-                </div>
-            </div>
-            <div class="info-card">
-                <div class="info-header">
-                    <div class="info-icon">🏥</div>
-                    <h3 class="info-title">Facilidades</h3>
-                </div>
-                <div class="info-content">
-                    <strong>Primeiros socorros:</strong> Posto médico<br>
-                    <strong>Sanitários:</strong> Públicos disponíveis<br>
-                    <strong>Acessibilidade:</strong> Raminas e caminhos adaptados
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Weather Section -->
-    <section id="weather" class="fade-in">
-        <h2 class="section-title">Previsão do Tempo</h2>
-        <div class="weather-container">
-            <p style="text-align: center; margin-bottom: 2rem; opacity: 0.9;">
-                Condições meteorológicas atuais para o Parque Verde da Beira
-            </p>
-            <div class="weather-grid">
-                <div class="weather-card">
-                    <div class="weather-icon">☀️</div>
-                    <div class="weather-temp">28°C</div>
-                    <div class="weather-desc">Hoje<br>Ensolarado</div>
-                </div>
-                <div class="weather-card">
-                    <div class="weather-icon">⛅</div>
-                    <div class="weather-temp">26°C</div>
-                    <div class="weather-desc">Amanhã<br>Parcialmente nublado</div>
-                </div>
-                <div class="weather-card">
-                    <div class="weather-icon">🌧️</div>
-                    <div class="weather-temp">24°C</div>
-                    <div class="weather-desc">Quinta<br>Chuva ligeira</div>
-                </div>
-                <div class="weather-card">
-                    <div class="weather-icon">🌤️</div>
-                    <div class="weather-temp">27°C</div>
-                    <div class="weather-desc">Sexta<br>Sol e nuvens</div>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--glass-border);">
-                <p style="opacity: 0.7;"><strong>💡 Dica:</strong> Verificar as condições meteorológicas antes da visita. Em caso de chuva forte, algumas atividades podem ser suspensas.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Safety Section -->
-    <section id="safety" class="fade-in">
-        <h2 class="section-title">Regras de Segurança</h2>
-        <div class="safety-grid">
-            <div class="safety-card">
-                <div class="safety-icon">🌊</div>
-                <h3 class="safety-title">Segurança Aquática</h3>
-                <ul class="safety-list">
-                    <li>Nadar apenas em áreas designadas</li>
-                    <li>Crianças devem estar sempre acompanhadas</li>
-                    <li>Uso obrigatório de coletes salva-vidas</li>
-                    <li>Não mergulhar em águas rasas</li>
-                    <li>Respeitar as condições meteorológicas</li>
-                </ul>
-            </div>
-            <div class="safety-card">
-                <div class="safety-icon">🚶</div>
-                <h3 class="safety-title">Segurança Geral</h3>
-                <ul class="safety-list">
-                    <li>Manter-se nos caminhos designados</li>
-                    <li>Não alimentar os animais selvagens</li>
-                    <li>Depositar o lixo nos recipientes adequados</li>
-                    <li>Respeitar a flora e fauna local</li>
-                    <li>Reportar situações de emergência</li>
-                </ul>
-            </div>
-            <div class="safety-card">
-                <div class="safety-icon">🔥</div>
-                <h3 class="safety-title">Prevenção de Incêndios</h3>
-                <ul class="safety-list">
-                    <li>Proibido acender fogueiras</li>
-                    <li>Não fumar em áreas vegetais</li>
-                    <li>Reportar qualquer foco de incêndio</li>
-                    <li>Manter veículos em locais designados</li>
-                    <li>Seguir instruções da equipe de segurança</li>
-                </ul>
-            </div>
-            <div class="safety-card">
-                <div class="safety-icon">📞</div>
-                <h3 class="safety-title">Emergências</h3>
-                <ul class="safety-list">
-                    <li><strong>Emergência:</strong> 119</li>
-                    <li><strong>Posto médico:</strong> +258 23 XXX XXX</li>
-                    <li><strong>Segurança do parque:</strong> +258 84 XXX XXX</li>
-                    <li><strong>Administração:</strong> +258 23 XXX XXX</li>
-                    <li>Ponto de encontro: Entrada principal</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="fade-in">
-        <h2 class="section-title">Serviços de Utilidade Pública</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">🚰</div>
-                <h3 class="service-title">Água Potável</h3>
-                <p>Fontes de água potável distribuídas pelo parque</p>
-                <div class="service-contact">
-                    <strong>Manutenção:</strong> +258 23 XXX XXX
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🗑️</div>
-                <h3 class="service-title">Recolha de Lixo</h3>
-                <p>Contentores de reciclagem e lixo geral</p>
-                <div class="service-contact">
-                    <strong>Serviços de limpeza:</strong> +258 84 XXX XXX
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🚽</div>
-                <h3 class="service-title">Sanitários</h3>
-                <p>Instalações sanitárias públicas e acessíveis</p>
-                <div class="service-contact">
-                    <strong>Manutenção:</strong> +258 23 XXX XXX
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">⚡</div>
-                <h3 class="service-title">Energia</h3>
-                <p>Pontos de carregamento e iluminação pública</p>
-                <div class="service-contact">
-                    <strong>EDM:</strong> +258 21 XXX XXX
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🚑</div>
-                <h3 class="service-title">Primeiros Socorros</h3>
-                <p>Posto médico com atendimento básico</p>
-                <div class="service-contact">
-                    <strong>Emergência:</strong> 119<br>
-                    <strong>Posto:</strong> +258 23 XXX XXX
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🅿️</div>
-                <h3 class="service-title">Estacionamento</h3>
-                <p>Áreas de estacionamento gratuito</p>
-                <div class="service-contact">
-                    <strong>Segurança:</strong> +258 84 XXX XXX
-                </div>
             </div>
         </div>
     </section>
@@ -1225,7 +678,7 @@
                     <p>Tendas e espaços para comércio local</p>
                 </div>
             </div>
-             <div class="gallery-item gallery-item-7">
+            <div class="gallery-item gallery-item-7">
                 <div class="gallery-overlay">
                     <!-- <h4>Centro Comercial</h4>
                     <p>Tendas e espaços para comércio local</p> -->
@@ -1362,78 +815,18 @@
             });
         }
 
-        // Basin cards interactive effect
-        function setupBasinCards() {
-            const basinCards = document.querySelectorAll('.basin-card');
-            basinCards.forEach((card, index) => {
-                card.addEventListener('click', function() {
-                    // Visual feedback
-                    this.style.transform = 'scale(0.95)';
-                    setTimeout(() => {
-                        this.style.transform = '';
-                    }, 150);
-                    
-                    // Could integrate with map functionality here
-                    console.log(`Bacia ${index + 1} selecionada`);
-                });
-            });
-        }
-
-        // Weather update simulation
-        function updateWeather() {
-            const weatherCards = document.querySelectorAll('.weather-card');
-            const conditions = [
-                { icon: '☀️', temp: Math.floor(Math.random() * 5) + 26, desc: 'Ensolarado' },
-                { icon: '⛅', temp: Math.floor(Math.random() * 5) + 24, desc: 'Nublado' },
-                { icon: '🌧️', temp: Math.floor(Math.random() * 5) + 22, desc: 'Chuva' },
-                { icon: '🌤️', temp: Math.floor(Math.random() * 5) + 25, desc: 'Sol e nuvens' }
-            ];
-            
-            // Update weather every 30 seconds for demo purposes
-            setInterval(() => {
-                weatherCards.forEach((card, index) => {
-                    const condition = conditions[Math.floor(Math.random() * conditions.length)];
-                    const icon = card.querySelector('.weather-icon');
-                    const temp = card.querySelector('.weather-temp');
-                    
-                    if (icon && temp) {
-                        icon.style.transform = 'scale(0.8)';
-                        setTimeout(() => {
-                            icon.textContent = condition.icon;
-                            temp.textContent = condition.temp + '°C';
-                            icon.style.transform = 'scale(1)';
-                        }, 200);
-                    }
-                });
-            }, 30000);
-        }
-
         // Initialize everything
         document.addEventListener('DOMContentLoaded', function() {
             createParticles();
             createObserver();
             setupSmoothScroll();
             setupForm();
-            setupBasinCards();
-            updateWeather();
         });
-
-        // Parallax effect for hero background
-        function handleParallax() {
-            const hero = document.querySelector('.hero');
-            const scrolled = window.pageYOffset;
-            const rate = scrolled * -0.5;
-            
-            if (hero) {
-                hero.style.backgroundPosition = `center ${rate}px`;
-            }
-        }
 
         // Scroll event listeners
         window.addEventListener('scroll', function() {
             updateScrollIndicator();
             handleNavbarScroll();
-            handleParallax();
         });
 
         // Add some interactive hover effects to gallery items
@@ -1448,48 +841,6 @@
                         this.style.transform = '';
                     }, 150);
                 });
-            });
-
-            // Add staggered animation to cards
-            const animateCards = (selector, delay = 100) => {
-                const cards = document.querySelectorAll(selector);
-                cards.forEach((card, index) => {
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(20px)';
-                    
-                    setTimeout(() => {
-                        card.style.transition = 'all 0.6s ease';
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, index * delay);
-                });
-            };
-
-            // Trigger animations when sections come into view
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const section = entry.target;
-                        
-                        if (section.id === 'spaces') {
-                            setTimeout(() => animateCards('.basin-card', 150), 500);
-                        }
-                        if (section.id === 'info') {
-                            setTimeout(() => animateCards('.info-card', 100), 500);
-                        }
-                        if (section.id === 'safety') {
-                            setTimeout(() => animateCards('.safety-card', 120), 500);
-                        }
-                        if (section.id === 'services') {
-                            setTimeout(() => animateCards('.service-card', 80), 500);
-                        }
-                    }
-                });
-            }, { threshold: 0.2 });
-
-            // Observe all sections
-            document.querySelectorAll('section').forEach(section => {
-                observer.observe(section);
             });
         });
     </script>
